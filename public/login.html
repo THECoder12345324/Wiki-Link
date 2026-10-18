@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wiki Link</title>
+        <link rel="stylesheet" href="sign.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <link rel="icon" type="image/x-icon" href="img/link.png" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="header-container">
+                <h1>Wiki-Link</h1>
+            </div>
+            <form id="login-form">
+                <input type="email" id="email-input" placeholder="Email" required>
+                <input type="password" id="password-input" placeholder="Password" autocomplete="off" required>
+                <button type="submit">Login</button>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+            
+                <button type="button" class="google-signin-button">
+                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo">
+                    Sign in with Google
+                </button>
+            
+                <p class="signup-redirect">Don't have an account? <a href="signup.html">Sign up here</a></p>
+            </form>
+        </div>
+        <script type="module">
+            import { signIn } from './fire.js';
+            window.onload = function() {
+                if (localStorage.getItem("user")) {
+                    window.location.href = "index.html";
+                }
+            }
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email-input').value;
+                const password = document.getElementById('password-input').value;
+                await signIn(email, password);
+            })
+        </script>
+    </body>
+</html>

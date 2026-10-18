@@ -1,0 +1,72 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wiki Link</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/16.1.2/lib/marked.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.7/purify.min.js"></script>
+        <script src="graph.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="img/link.png" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="dropdown-container">
+                <button type="submit" id="profile" class="dropdown-btn">☰ Profile</button>
+
+                <div id="profileDropdown" class="dropdown-content">
+                    <a id="profileOption">My Profile</a>
+                    <a href="graphs.html" id="graphOption">My Graphs</a>
+                    <a href="login.html" id="authOption">Login</a>
+                </div>
+            </div>
+            <div class="header-container">
+                <h1 id="head">Wiki-Link</h1>
+                <div>
+                <span id="theme-toggler">Light</span>
+                <button type="button" class="collapsible">View Graph</button>
+                <button type="button" id="saver">Save Graph</button>
+                </div>
+            </div>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter search term">
+                <button type="submit">Search</button>
+            </form>
+            <div id="stuff">
+                <div id="search-results"></div>
+                <div>
+                    <div class="content" id="graph"></div>
+                </div>
+            </div>
+            <div class="popup" id="popup">
+                <input type="text" id="graph-title" placeholder="Enter Graph Title">
+                <button type="submit" id="graph-to-firestore">Save</button>
+                <span id="close-out">X</span>
+            </div>
+
+            <button id="chatbotToggle">💬</button>
+            <div class="chatbot" id="chatbot">
+                <div>
+                    <h2>Clario</h2>
+                    <select id="modelSelector"></select>
+                </div>
+                <div id="chatContainer">
+                    <div id="chatMessages"></div>
+                </div>
+                <div id="inputContainer">
+                    <input id="userInput" placeholder="Enter your message..."></input>
+                    <button id="sendButton">Send</button>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+        <script src="chatbot.js"></script>
+        <script type="module" src="auth.js"></script>
+        <script type="module" src="db.js"></script>
+    </body>
+</html>

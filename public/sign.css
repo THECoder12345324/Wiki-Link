@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+
+  /*#login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  #email-input {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.25rem;
+    flex-grow: 1;
+  }
+
+  #password-input {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.25rem;
+    flex-grow: 1;
+  }
+  button[type="submit"] {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }*/
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* General form styling */
+/* General form styling */
+#login-form {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased space between elements for better readability */
+  max-width: 400px;
+  margin: 50px auto;
+  border: 1px solid #e0e0e0;
+}
+
+/* Input field styling */
+#login-form input[type="email"],
+#login-form input[type="password"],
+#login-form input[type="username"]
+ {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #495057;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+#login-form input[type="email"]:focus,
+#login-form input[type="password"]:focus,
+#login-form input[type="username"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Placeholder styling */
+#login-form input::placeholder {
+  color: #a0a0a0;
+  font-weight: 300;
+}
+
+/* Primary Sign In Button styling (changed text from "Create Account") */
+#login-form button[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#login-form button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+#login-form button[type="submit"]:active {
+  background-color: #004085;
+  transform: translateY(0);
+}
+
+/* Divider styling */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: .25em;
+}
+
+/* Google Sign-in Button styling */
+.google-signin-button {
+  background-color: #ffffff; /* White background */
+  color: #4285F4; /* Google blue text */
+  border: 1px solid #dadce0; /* Light grey border */
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between icon and text */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.google-signin-button img {
+  width: 20px; /* Adjust Google logo size */
+  height: 20px;
+}
+
+.google-signin-button:hover {
+  background-color: #f7f9fa; /* Very light grey on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+.google-signin-button:active {
+  background-color: #e8eaed; /* Slightly darker grey on click */
+}
+
+/* Sign-up redirect link styling */
+.signup-redirect {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 15px; /* Space above the redirect text */
+}
+
+.signup-redirect a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none; /* No underline by default */
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.signup-redirect a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover */
+}

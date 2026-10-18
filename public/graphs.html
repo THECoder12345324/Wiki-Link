@@ -1,0 +1,98 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wiki Link</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+        <script src="graph.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="img/link.png" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="dropdown-container">
+                <button type="submit" id="profile" class="dropdown-btn">☰ Profile</button>
+
+                <div id="profileDropdown" class="dropdown-content">
+                    <a id="profileOption">My Profile</a>
+                    <a id="graphOption">My Graphs</a>
+                    <a href="login.html" id="authOption">Login</a>
+                </div>
+            </div>
+            <div class="header-container">
+                <h1 id="head">Wiki-Link</h1>
+                <div>
+                <span id="theme-toggler">Light</span>
+                </div>
+            </div>
+            <!--<form id="search-form">
+                <input type="text" id="search-input" placeholder="Search For Graph">
+                <button type="submit">Search</button>
+            </form>-->
+            <div id="graph-list"></div>
+        </div>
+        <script type="module">
+            //USER PROFILE
+            import { signOutCompletely, loadGraph, loadGraphByName } from './fire.js';
+            let isLoggedIn = false;
+            let user = null;
+            const profileB = document.getElementById("profile");
+            profileB.addEventListener('click', () => {
+                console.log("clicked");
+                var content = document.getElementById("profileDropdown");
+                content.classList.toggle("active");
+                if (content.classList.contains("active")) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+
+            const loginButton = document.getElementById("authOption");
+            loginButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                let user = localStorage.getItem('user');
+                let isLoggedIn = false;
+                if (user) {
+                    isLoggedIn = false;
+                    signOutCompletely();
+                } else {
+                    window.location.href = "login.html";
+                }
+                updateAuthOption();
+            });
+
+            function updateAuthOption() {
+                const authOption = document.getElementById("authOption");
+                authOption.textContent = isLoggedIn ? "Logout" : "Login";
+            }
+
+            window.onload = async function() {
+                user = JSON.parse(localStorage.getItem('user'));
+                isLoggedIn = false;
+                if (user) {
+                    isLoggedIn = true;
+                    console.log(user);
+                    loadGraph(user);
+                } else {
+                    window.location.href = "index.html";
+                }
+                updateAuthOption();
+            }
+
+            document.body.addEventListener("click", async function(event) {
+                if (event.target.matches(".graphViewElement")) {
+                    event.preventDefault();
+                    user = JSON.parse(localStorage.getItem('user'));
+                    const graphName = event.target.querySelector('a').textContent;
+                    console.log(graphName);
+                    sessionStorage.setItem("curGraph", JSON.stringify(await loadGraphByName(user, graphName)));
+                    window.location.href = "index.html";
+                }
+            })
+        </script>
+    </body>
+</html>
